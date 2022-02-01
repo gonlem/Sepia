@@ -11,7 +11,7 @@ block main
             input(id='search-field' type='search')
             span(id='search-count') #{signingRights.length}
 
-    div(id='list-signing-rights-content' class='content')
+    div(class='content')
         table(class='sortable-table')
             thead
                 tr
@@ -49,7 +49,6 @@ block main
                 label Alias du Certificat (optionnel)
                     input(name='certificate_alias' type='text')
                 button(type='submit') Ajouter
-
         div(id='import-signing-rights-modal' class='modal')
             form(method='POST' enctype='multipart/form-data' action='/sepia-admin/signing-rights-upload')
                 h1 Charger un fichier

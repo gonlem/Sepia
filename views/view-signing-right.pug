@@ -1,8 +1,7 @@
 extends basic-layout 
 
 block main
-
-    div(id='view-signing-right-content' class='content')
+    div(class='content')
         form(method='POST' action='')
             h1 Édition d'un droit de signature
             label CBE du signataire
@@ -16,6 +15,5 @@ block main
             label Alias du Certificat (optionnel)
                 input(name='certificate_alias' type='text' value=signingRight.certificate_alias)
             button(type='submit') Enregistrer les modifications
-
         form()
             button.delete-button Supprimer ce droit de signature

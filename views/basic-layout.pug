@@ -1,7 +1,7 @@
 doctype html
 html(lang='fr')
     head
-        title Sepia - Administration
+        title Sepia - Admin Webapp
         meta(charset='utf-8')
         meta(name='viewport' content='width=device-width, initial-scale=1')
         link(rel='stylesheet' href='/css/sepia.css')
@@ -10,9 +10,9 @@ html(lang='fr')
         header
             h1(id='title') Sepia - Admin Webapp
             nav
-                a(id='nav-home' href='/sepia-admin/home') Accueil
-                a(id='nav-certificates' href='/sepia-admin/certificates') Certificats
-                a(id='nav-signing-rights' href='/sepia-admin/signing-rights') Droits de signature
+                a(href='/sepia-admin/home') Accueil
+                a(href='/sepia-admin/certificates') Certificats
+                a(href='/sepia-admin/signing-rights') Droits de signature
         main
             block main
         footer

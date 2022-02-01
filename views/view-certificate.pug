@@ -1,25 +1,19 @@
 extends basic-layout
 
 block main
-    div(id='view-certificate-content' class='content')
-
-        form(id='certificate-update-form' method='POST' action='' autocomplete='off')
+    div(class='content')
+        form(method='POST' action='' autocomplete='off')
             h1 Édition d'un certificat
-            
-            div(class='row')
-                div(class='column')
-                    label Alias du certificat
-                        input(name='alias' type='text' size='20' required value=certificate.alias)
-                    label CBE du signataire
-                        input(name='signer_cbe' type='text' size='10' required value=certificate.signer_cbe)
-                    label SSIN du signataire (optionnel)
-                        input(name='signer_ssin' type='text' size='11' value=certificate.signer_ssin)
-                    label Subject DN du certificat
-                        input(name='subject_dn' type='text' size='30' disabled value=certificate.subject_dn)
-                    label Commentaire (optionnel)
-                        textarea(name='comment' rows='3') #{certificate.comment}
-            
+            label Alias du certificat
+                input(name='alias' type='text' size='20' required value=certificate.alias)
+            label CBE du signataire
+                input(name='signer_cbe' type='text' size='10' required value=certificate.signer_cbe)
+            label SSIN du signataire (optionnel)
+                input(name='signer_ssin' type='text' size='11' value=certificate.signer_ssin)
+            label Subject DN du certificat
+                input(name='subject_dn' type='text' size='30' disabled value=certificate.subject_dn)
+            label Commentaire (optionnel)
+                textarea(name='comment' rows='3') #{certificate.comment}
             button(type='submit') Enregistrer les modifications
-
         form()
             button.delete-button Supprimer ce certificat

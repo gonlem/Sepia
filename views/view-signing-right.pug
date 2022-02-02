@@ -3,7 +3,10 @@ extends basic-layout
 block main
     div(class='content')
         form(method='POST' action='')
-            h1 Édition d'un droit de signature
+            h1
+                span Édition d'un droit de signature
+                a(class='button' href='.') ⬅
+                a(class='button' href='#delete-modal') 🗑
             label CBE du signataire
                 input(name='signer_cbe' type='text' size='10' required value=signingRight.signer_cbe)
             label SSIN du signataire (optionnel)
@@ -15,5 +18,13 @@ block main
             label Alias du Certificat (optionnel)
                 input(name='certificate_alias' type='text' value=signingRight.certificate_alias)
             button(type='submit') Enregistrer les modifications
-        form()
-            button.delete-button Supprimer ce droit de signature
+    div(id='modals')
+        div(id='delete-modal' class='modal')
+            form
+                h1
+                    span Confirmer la suppression
+                    a(class='button' href='#') ✖
+                span Êtes-vous sûr ?
+                div(class='row')
+                    button.delete-button Oui
+                    a(class='button' href='#') Non

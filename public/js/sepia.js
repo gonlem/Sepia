@@ -12,6 +12,7 @@ document.querySelectorAll('.clickable-item').forEach(item => {
  */
  document.querySelectorAll('.delete-button').forEach(button => {
     button.addEventListener('click', () => {
+        location.hash = '';
         let xhr = new XMLHttpRequest();
         xhr.open('DELETE', window.location.href, false);
         xhr.send();

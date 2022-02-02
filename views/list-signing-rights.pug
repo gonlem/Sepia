@@ -36,7 +36,8 @@ block main
     div(id='modals')
         div(id='new-signing-right-modal' class='modal')
             form(method='POST' action='/sepia-admin/signing-rights')
-                h1 Nouveau droit de signature
+                h1
+                    span Nouveau droit de signature
                     a(class='button' href='#') ✖
                 label CBE du signataire
                     input(name='signer_cbe' type='text' size='10' required)
@@ -51,7 +52,8 @@ block main
                 button(type='submit') Ajouter
         div(id='import-signing-rights-modal' class='modal')
             form(method='POST' enctype='multipart/form-data' action='/sepia-admin/signing-rights-upload')
-                h1 Charger un fichier
+                h1
+                    span Charger un fichier
                     a(class='button' href='#') ✖
                 span Avant de charger le fichier, veuillez vérifier les points suivants :
                 span - La première ligne du fichier doit être la ligne avec les intitulés des colonnes.

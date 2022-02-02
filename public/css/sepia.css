@@ -249,6 +249,11 @@ form > h1 {
     color: var(--form-title-text-color);
     margin: -12px -12px 0px;
     padding: 12px;
+    gap: 12px;
+}
+
+form > h1 > *:first-child {
+    flex: 1;
 }
 
 form > h1 > button, form > h1 > .button {

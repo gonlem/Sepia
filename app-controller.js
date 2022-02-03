@@ -74,11 +74,19 @@ exports.list_certificates = async function (req, res, next) {
 }
 
 exports.create_certificate = async function (req, res, next) {
+    let alias = req.body.alias;
+    alias ||= (req.body.signer_ssin != '' ? req.body.signer_ssin : req.body.signer_cbe);
+    let subject_dn = 'CN=' + req.body.subject_cn + ',O=' + req.body.subject_o 
+    + (req.body.subject_ou1 != '' ? ',OU=' + req.body.subject_ou1 : '')
+    + (req.body.subject_ou2 != '' ? ',OU=' + req.body.subject_ou2 : '')
+    + (req.body.subject_ou3 != '' ? ',OU=' + req.body.subject_ou3 : '')
+    + (req.body.subject_email != '' ? ',E=' + req.body.subject_email : '')
+    + ',C=' + req.body.subject_c;
     await Model.Certificate.create({
-        alias: req.body.alias,
+        alias: alias,
         signer_cbe: req.body.signer_cbe,
         signer_ssin: req.body.signer_ssin,
-        subject_dn: 'CN=' + req.body.subject_cn + ',O=' + req.body.subject_o + ',OU=' + req.body.subject_ou + ',C=' + req.body.subject_c,
+        subject_dn: subject_dn,
         comment: req.body.comment
     });
     res.redirect('/sepia-admin/certificates');

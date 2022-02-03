@@ -5,6 +5,8 @@ block main
     div(id='toolbar')
         div(id='toolbar-buttons')
             a(class='button' href='#new-certificate-modal') Nouveau certificat
+            a(class='button' href='#') Télécharger les CSR en attente
+            a(class='button' href='#') Importer des certificats
         div(id='toolbar-search-box')
             span 🔍
             input(id='search-field' type='search')
@@ -41,8 +43,8 @@ block main
                     a(class='button' href='#') ✖
                 div(class='row')
                     div(class='column')
-                        label Alias du certificat
-                            input(name='alias' type='text' size='20' required)
+                        label Alias du certificat (optionnel)
+                            input(name='alias' type='text' size='20')
                         label CBE du signataire
                             input(name='signer_cbe' type='text' size='10' required)
                         label SSIN du signataire (optionnel)
@@ -52,12 +54,18 @@ block main
                     div(class='column')
                         fieldset
                             legend Données du certificat
-                            label CN
+                            label Common Name (CN)
                                 input(name='subject_cn' type='text' size='16' required)
-                            label O
+                            label Organization (O)
                                 input(name='subject_o' type='text' size='16' required)
-                            label OU
-                                input(name='subject_ou' type='text' size='16' required)
-                            label C
-                                input(name='subject_c' type='text' size='2' required)
+                            label Organizational Unit 1 (OU)
+                                input(name='subject_ou1' type='text' size='16')
+                            label Organizational Unit 2 (OU)
+                                input(name='subject_ou2' type='text' size='16')
+                            label Organizational Unit 3 (OU)
+                                input(name='subject_ou3' type='text' size='16')
+                            label Email (E)
+                                input(name='subject_email' type='text' size='20')
+                            label Country (C)
+                                input(name='subject_c' type='text' size='2' required value='BE')
                 button(type='submit') Ajouter

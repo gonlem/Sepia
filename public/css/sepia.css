@@ -28,7 +28,6 @@
     --footer-background-color: var(--primary-color-darkest);
     --footer-text-color: white;
 
-    --toolbar-background-color: var(--primary-color-darker);
     --main-background-color: var(--primary-color);
     --main-text-color: black;
 
@@ -44,17 +43,16 @@
     --table-tbody-tr-hover-background-color: var(--primary-color-lighter);
     --table-tbody-tr-hover-text-color: black;
 
+    --card-header-background-color: var(--primary-color-darkest);
+    --card-header-text-color: white;
+
     --form-background-color: var(--primary-color-lighter);
     --form-text-color: black;
-    --form-title-background-color: var(--primary-color-darker);
-    --form-title-text-color: white;
 
     --fieldset-legend-background-color: var(--primary-color-darker);
     --fieldset-legend-text-color: white;
     --fieldset-background-color: var(--primary-color-lightest);
     --fieldset-text-color: black;
-    --choice-fieldset-legend-background-color: var(--primary-color-lighter);
-    --choice-fieldset-legend-text-color: black;
 }
 
 *, *:before, *:after {
@@ -62,92 +60,12 @@
     padding: 0;
     margin: 0;
     border: 0;
-    font-family: Verdana;
+    font-family: Helvetica;
     font-size: unset;
 }
 
-#container {
-	min-height: 100vh;
-    min-width: fit-content;
-	display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 16px;
-}
-
-#container > header {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--header-background-color);
-    color: var(--header-text-color);
-    padding: 8px 16px;
-    box-shadow: 0 0 2px 1px grey;
-}
-
-#container > header > h1 {
-    font-family: var(--header-title-font-family);
-    font-size: var(--header-title-font-size);
-    font-weight: var(--header-title-font-weight);
-}
-
-#container > header > nav {
-    justify-self: center;
-    display: grid;
-    grid-auto-flow: column;
-}
-
-#container > header > nav > a {
-    background-color: var(--nav-background-color);
-    color: var(--nav-text-color);
-    font-family: var(--nav-font-family);
-    font-size: var(--nav-font-size);
-    text-decoration: none;
-    margin-left: -1px;
-    text-align: center;
-    padding: 5px 10px;
-}
-
-#container > header > nav > a:hover {
-    background-color: var(--nav-hover-background-color);
-    color: var(--nav-hover-text-color);
-}
-
-#container > main {
-    margin: 0px 16px;
-    background-color: var(--main-background-color);
-    color: var(--main-text-color);
-    border-radius: 6px;
-    overflow: hidden;
-    min-width: fit-content;
-    box-shadow: 0 0 2px 1px grey;
-}
-
-#container > footer {
-    background-color: var(--footer-background-color);
-    color: var(--footer-text-color);
-    text-align: center;
-    padding: 8px 16px;
-    box-shadow: 0 0 2px 1px grey;
-}
-
-button, .button {
-    cursor: pointer;
-    background-color: var(--button-background-color);
-	color: var(--button-text-color);
-    text-decoration: none;
-    padding: 4px 5px;
-    border: 1px solid grey;
-	border-radius: 5px;
-    align-self: center;/**/
-    justify-self: center;/**/
-}
-
-button:focus, .button:focus {
-    outline: none;
-}
-
-button:hover, .button:hover {
-    background-color: var(--button-hover-background-color);
-    color: var(--button-hover-text-color);
+h1 {
+    font-size: 1.2em;
 }
 
 label {
@@ -179,29 +97,42 @@ fieldset > legend {
     padding: 2px 4px;
 }
 
-.radio-fieldset, .checkbox-fieldset {
-    background-color: white;
-}
-
-.radio-fieldset > legend, .checkbox-fieldset > legend {
-    background-color: var(--choice-fieldset-legend-background-color);
-    color: var(--choice-fieldset-legend-text-color);
-    border: 1px solid grey;
-}
-
-.radio-fieldset > label, .checkbox-fieldset > label {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    align-items: baseline;
-    gap: 5px;
-}
-
 table {
     border-collapse: collapse;
-    box-shadow: 0 0 4px 1px grey;
-    align-self: center;/**/
-    justify-self: center;/**/
+}
+
+table > thead > tr > th, table > tbody > tr > td {
+    border: 1px solid grey;
+    padding: 6px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 12px;
+    gap: 12px;
+    background-color: var(--form-background-color);
+    color: var(--form-text-color);
+}
+
+button, .button {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 4px 5px;
+    border: 1px solid grey;
+	border-radius: 5px;
+    background-color: var(--button-background-color);
+	color: var(--button-text-color);
+}
+
+button:focus, .button:focus {
+    outline: none;
+}
+
+button:hover, .button:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
 }
 
 table > thead {
@@ -221,67 +152,6 @@ table > tbody > tr:nth-child(even) {
 table > tbody > tr:hover {
     background-color: var(--table-tbody-tr-hover-background-color);
     color: var(--table-tbody-tr-hover-text-color);
-}
-
-table > thead > tr > th, table > tbody > tr > td {
-    border: 1px solid grey;
-    padding: 6px;
-}
-
-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding: 12px;
-    gap: 12px;
-    background-color: var(--form-background-color);
-    color: var(--form-text-color);
-    border: 1px solid grey;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-form > h1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--form-title-background-color);
-    color: var(--form-title-text-color);
-    margin: -12px -12px 0px;
-    padding: 12px;
-    gap: 12px;
-}
-
-form > h1 > *:first-child {
-    flex: 1;
-}
-
-form > h1 > button, form > h1 > .button {
-    padding: 2px 5px 4px;   
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal:target {
-    display: block;
-}
-
-.modal > form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*max-width: 500px;*/
 }
 
 .clickable-item {
@@ -310,97 +180,152 @@ form > h1 > button, form > h1 > .button {
     margin-left: 5px;
 }
 
-main > #toolbar {
-    display: flex;
-    background-color: var(--toolbar-background-color);
-    align-items: center;
-    padding: 6px;
-    gap: 6px;
+#modals > * {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-main > #toolbar > #toolbar-buttons {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    gap: 6px;
-    color: white;
+#modals > *:target {
+    display: block;
 }
 
-main > #toolbar > #toolbar-buttons > h1 {
-    font-size: 1.2em;
+#modals > * > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-main > #toolbar > #toolbar-view-all > label {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: baseline;
-    border-radius: 6px;
-    padding: 4px;
-    gap: 5px;
-    background-color: lightgrey;
-    border: 1px solid grey;
-    cursor: pointer;
-}
-
-main > #toolbar > #toolbar-search-box {
+.search-box {
     display: flex;
     border: 1px solid grey;
     border-radius: 6px;
     overflow: hidden;
     align-items: center;
     background-color: lightgrey;
+    color: black;
+    width: fit-content;
 }
 
-main > #toolbar > #toolbar-search-box > span {
+.search-box > span {
     padding: 2px 4px;
 }
 
-main > #toolbar > #toolbar-search-box > input {
+.search-box > input {
     border-radius: unset;
     border: unset;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
 }
 
-main > #toolbar > #toolbar-search-box > input:focus {
+.search-box > input:focus {
     outline: none;
 }
 
-.content {
+.card {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding: 12px;
-    gap: 12px;
-    align-content: start;
-    justify-content: center;
-    align-items: start;
-    justify-items: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 8px 1px grey;
+}
+
+.card > .card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--card-header-background-color);
+    color: var(--card-header-text-color);
+}
+
+.card > .card-header > .card-header-left, .card > .card-header > .card-header-right {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.card > table {
+    margin: -1px;
+}
+
+.center {
+    align-self: center;
+    justify-self: center;
 }
 
 .column {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
-    /*justify-content: center;*/
-    /*align-items: start;*/
-    justify-items: start;
-    align-content: start;
 }
 
 .row {
     display: flex;
     flex-direction: row;
     gap: 12px;
-    /*justify-content: center;*/
-    /*align-items: start;*/
 }
 
-.right-align {
-    text-align: end;
+#container {
+	min-height: 100vh;
+    min-width: fit-content;
+	display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
-main > #home-content button {
-    align-self: stretch;
+#container > header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
+    padding: 8px 16px;
+}
+
+#container > header > h1 {
+    font-family: var(--header-title-font-family);
+    font-size: var(--header-title-font-size);
+    font-weight: var(--header-title-font-weight);
+}
+
+#container > header > nav {
+    display: flex;
+}
+
+#container > header > nav > a {
+    background-color: var(--nav-background-color);
+    color: var(--nav-text-color);
+    font-family: var(--nav-font-family);
+    font-size: var(--nav-font-size);
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+#container > header > nav > a:hover {
+    background-color: var(--nav-hover-background-color);
+    color: var(--nav-hover-text-color);
+}
+
+#container > main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
+}
+
+#container > footer {
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 8px 16px;
 }

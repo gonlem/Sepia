@@ -1,12 +1,15 @@
 extends basic-layout 
 
 block main
-    div(class='content')
+
+    div.card
+        div.card-header
+            div.card-header-left
+                h1 Édition d'un droit de signature
+            div.card-header-right
+                a.button(href='.') ⬅
+                a.button(href='#delete-modal') 🗑
         form(method='POST' action='')
-            h1
-                span Édition d'un droit de signature
-                a(class='button' href='.') ⬅
-                a(class='button' href='#delete-modal') 🗑
             label CBE du signataire
                 input(name='signer_cbe' type='text' size='10' required value=signingRight.signer_cbe)
             label SSIN du signataire (optionnel)
@@ -17,14 +20,18 @@ block main
                 input(name='document_classification' type='text' size='20' required value=signingRight.document_classification)
             label Alias du Certificat (optionnel)
                 input(name='certificate_alias' type='text' value=signingRight.certificate_alias)
-            button(type='submit') Enregistrer les modifications
-    div(id='modals')
-        div(id='delete-modal' class='modal')
+            button.center(type='submit') Enregistrer les modifications
+            
+    div#modals
+        div#delete-modal
+            div.card
+                div.card-header
+                    div.card-header-left
+                        h1 Confirmer la suppression
+                    div.card-header-right
+                        a.button(href='#') ✖
             form
-                h1
-                    span Confirmer la suppression
-                    a(class='button' href='#') ✖
                 span Êtes-vous sûr ?
-                div(class='row')
+                div.row
                     button.delete-button Oui
-                    a(class='button' href='#') Non
+                    a.button(href='#') Non

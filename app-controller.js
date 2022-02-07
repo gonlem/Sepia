@@ -79,7 +79,6 @@ exports.create_certificate = async function (req, res, next) {
     let subject_dn = 'CN=' + req.body.subject_cn + ',O=' + req.body.subject_o 
     + (req.body.subject_ou1 != '' ? ',OU=' + req.body.subject_ou1 : '')
     + (req.body.subject_ou2 != '' ? ',OU=' + req.body.subject_ou2 : '')
-    + (req.body.subject_ou3 != '' ? ',OU=' + req.body.subject_ou3 : '')
     + (req.body.subject_email != '' ? ',E=' + req.body.subject_email : '')
     + ',C=' + req.body.subject_c;
     await Model.Certificate.create({

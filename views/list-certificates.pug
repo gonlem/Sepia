@@ -2,17 +2,17 @@ extends basic-layout
 
 block main
 
-    div(id='toolbar')
-        div(id='toolbar-buttons')
-            a(class='button' href='#new-certificate-modal') Nouveau certificat
-            a(class='button' href='#') Télécharger les CSR en attente
-            a(class='button' href='#') Importer des certificats
-        div(id='toolbar-search-box')
-            span 🔍
-            input(id='search-field' type='search')
-            span(id='search-count') #{certificates.length}
-
-    div(class='content')
+    div.card
+        div.card-header
+            div.card-header-left
+                a.button(href='#new-certificate-modal') Nouveau certificat
+                a.button(href='#') Télécharger les CSR
+                a.button(href='#') Importer des certificats
+            div.card-header-right
+                div.search-box
+                    span 🔍
+                    input#search-field(type='search' size='14')
+                    span#search-count= certificates.length
         table.sortable-table
             thead
                 tr
@@ -20,11 +20,11 @@ block main
                     th CBE du signataire
                     th SSIN du signataire
                     th Subject DN
-                    th(class='th-sort-desc') Fin de validité
+                    th Fin de validité
             tbody
                 if certificates.length > 0
                     each certificate in certificates
-                        tr(class='clickable-item searchable-item' data-link=('/sepia-admin/certificates/' + certificate._id))
+                        tr.clickable-item.searchable-item(data-link=('/sepia-admin/certificates/' + certificate._id))
                             td= certificate.alias
                             td= certificate.signer_cbe
                             td= (certificate.signer_ssin != undefined ? certificate.signer_ssin : '')
@@ -33,39 +33,41 @@ block main
                             td(data-value=validToValue)= (certificate.valid_to != undefined ? certificate.valid_to.toLocaleDateString('fr') : '')
                 else
                     tr
-                        td(colspan='11') Aucun certificat trouvé
+                        td(colspan='5') Aucun certificat trouvé
 
-    div(id='modals')
-        div(id='new-certificate-modal' class='modal')
-            form(method='POST' action='/sepia-admin/certificates')
-                h1
-                    span Nouveau certificat
-                    a(class='button' href='#') ✖
-                div(class='row')
-                    div(class='column')
-                        label Alias du certificat (optionnel)
-                            input(name='alias' type='text' size='20')
-                        label CBE du signataire
-                            input(name='signer_cbe' type='text' size='10' required)
-                        label SSIN du signataire (optionnel)
-                            input(name='signer_ssin' type='text' size='11')
-                        label Commentaire (optionnel)
-                            textarea(name='comment' rows='3')
-                    div(class='column')
-                        fieldset
-                            legend Données du certificat
-                            label Common Name (CN)
-                                input(name='subject_cn' type='text' size='16' required)
-                            label Organization (O)
-                                input(name='subject_o' type='text' size='16' required)
-                            label Organizational Unit 1 (OU)
-                                input(name='subject_ou1' type='text' size='16')
-                            label Organizational Unit 2 (OU)
-                                input(name='subject_ou2' type='text' size='16')
-                            label Organizational Unit 3 (OU)
-                                input(name='subject_ou3' type='text' size='16')
-                            label Email (E)
-                                input(name='subject_email' type='text' size='20')
-                            label Country (C)
-                                input(name='subject_c' type='text' size='2' required value='BE')
-                button(type='submit') Ajouter
+    div#modals
+        div#new-certificate-modal
+            div.card
+                div.card-header
+                    div.card-header-left
+                        h1 Nouveau certificat
+                    div.card-header-right
+                        a.button(href='#') ✖
+                form(method='POST' action='/sepia-admin/certificates')
+                    div.row
+                        div.column
+                            label Alias du certificat (optionnel)
+                                input(name='alias' type='text' size='20')
+                            label CBE du signataire
+                                input(name='signer_cbe' type='text' size='10' required)
+                            label SSIN du signataire (optionnel)
+                                input(name='signer_ssin' type='text' size='11')
+                            label Commentaire (optionnel)
+                                textarea(name='comment' rows='3')
+                        div.column
+                            fieldset
+                                legend Données du certificat
+                                div.column
+                                    label Common Name (CN)
+                                        input(name='subject_cn' type='text' size='16' required)
+                                    label Organization (O)
+                                        input(name='subject_o' type='text' size='16' required)
+                                    label Organizational Unit 1 (OU)
+                                        input(name='subject_ou1' type='text' size='16')
+                                    label Organizational Unit 2 (OU)
+                                        input(name='subject_ou2' type='text' size='16')
+                                    label Email (E)
+                                        input(name='subject_email' type='text' size='20')
+                                    label Country (C)
+                                        input(name='subject_c' type='text' size='3' required value='BE')
+                    button.center(type='submit') Ajouter

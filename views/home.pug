@@ -2,37 +2,28 @@ extends basic-layout
 
 block main
 
-    div(id='toolbar')
-        div(id='toolbar-buttons')
-        div(id='toolbar-search-box')
-            span 🔍
-            input(id='search-field' type='search')
-            span(id='search-count') #{signatureHistory.length}
+    form(class='row' method='GET' action='/sepia-admin/home')
+        label Début de période
+            input(name='date_from' type='date' required value=startDate.toISOString().slice(0, 10))
+        label Fin de période
+            input(name='date_to' type='date' required value=endDate.toISOString().slice(0, 10))
+        button(type='submit') Afficher
 
-    div(id='home-content' class='content')
-
-        form(class='row' method='GET' action='/sepia-admin/home')
-            label Début de période
-                input(name='date_from' type='date' required value=startDate.toISOString().slice(0, 10))
-            label Fin de période
-                input(name='date_to' type='date' required value=endDate.toISOString().slice(0, 10))
-            button(type='submit') Afficher
-
-        table(class='sortable-table')
-            thead
+    table(class='sortable-table')
+        thead
+            tr
+                th(class='th-sort-desc') Date de réception
+                th URN du client
+                th Statut de la demande
+                th Durée (ms)
+        tbody
+            if signatureHistory.length > 0
+                each entry in signatureHistory
+                    tr(class='searchable-item')
+                        td=entry.reception_date
+                        td=entry.client
+                        td=entry.status_code
+                        td=entry.duration
+            else
                 tr
-                    th(class='th-sort-desc') Date de réception
-                    th URN du client
-                    th Statut de la demande
-                    th Durée (ms)
-            tbody
-                if signatureHistory.length > 0
-                    each entry in signatureHistory
-                        tr(class='searchable-item')
-                            td=entry.reception_date
-                            td=entry.client
-                            td=entry.status_code
-                            td=entry.duration
-                else
-                    tr
-                        td(colspan='4') Aucune donnée trouvée
+                    td(colspan='4') Aucune donnée trouvée
